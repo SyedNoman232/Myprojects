@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <style>
+        .label{
+            position: absolute;
+            width: 200px;
+            height: 40px;
+            background-color:lightslategray;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .input{
+            visibility: hidden;
+        }
+        .input:checked + .label{
+            background-color: rgb(24, 24, 21);
+        }
+        .input:checked + .label .circle{
+            animation: toggleOn  .4s
+            linear forwards ;
+        }
+        @keyframes toggleOn {
+            0%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(160px);
+            }
+        }
+        @keyframes toggleOff {
+            0%{
+                transform: translateX(170px);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            transition: .3s;
+
+        }
+        .circle{
+            width: 34px;
+            background-color:orangered;
+            height: 34px;
+            border-radius:50px ;
+            top: 3PX;
+            position: absolute;
+            left: 3PX;
+            animation: toggleOff .4s
+            linear forwards;
+        }
+        h1{
+            font-size: larger;
+            color: black;
+            margin-left:0;
+            margin-bottom: 200px;
+        }
+        h2{
+            color: white;
+            margin-left: 0;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HELLO ASSLAMUALIKUM</h1>
+    <h2>wrahmatullahi barkatahu</h2>
+    <input type="checkbox" id ="dark-mode"
+    class="input">
+    <label for="dark-mode" class="label">
+        <div class="circle"></div>
+    </label>
+    <script>
+        const inputEl =document.querySelector(".input");
+
+        const bodyEl =document.querySelector("body");
+
+        inputEl.checked = false
+
+        updateBody()
+
+        function updateBody(){
+            if(inputEl.checked){
+                bodyEl.style.background = "black"
+            }else{
+                bodyEl.style.background = "white"
+            }
+        }
+
+        inputEl.addEventListener("input", ()=>{
+            updateBody()
+        })
+    </script>
+
+</body>
+</html>
