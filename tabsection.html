@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Section</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(102, 111, 102) ;
+            color: rgb(7, 8, 19);
+        }
+        img{
+            display: block;
+            width: 100%;
+            border-radius: 0.7rem;
+            object-fit: cover;
+            height: 35rem;
+            margin:1rem;
+
+        }
+        .section-center{
+         width: 90vw;
+         margin:0 auto ;   
+         max-width: 1170px;
+         min-width: 340px;
+         padding:5rem 0 ;
+
+        }
+
+        .tabs{
+            background: rgb(204, 232, 204);
+            border-radius: .5rem;
+            grid-template-rows: auto 1fr;
+        }
+
+        .button{
+            padding: 1rem 0;
+            border:none ;
+            font-size: 1rem;
+            background: rgb(186, 205, 153);
+            cursor: pointer;
+            transition:all .3s linear ;
+            letter-spacing: .25rem;
+        }
+
+        .btn-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .button:nth-child(1){
+            border-top-left-radius: 0.5rem;
+        }
+        .button:nth-child(3){
+            border-top-right-radius: 0.5rem;
+        }
+        .button:hover{
+            background: rgb(48, 158, 76);
+            color: rgb(20, 14, 14);
+        }
+        .tabs-content{
+            padding: 2rem 1.5rem;
+        }
+        @media (min-width:992px){
+            .image{
+                margin-bottom: 0;
+            }
+            .section-center{
+                display: grid;
+                grid-template-columns:1fr 1fr ;
+                column-gap: 2rem;
+            }
+        }
+        .content{
+            display: none;
+        }
+        .content.live{
+            display: block;
+        }
+        .button.live{
+            background:none;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+     <div class="section-center">
+        <div class="image">
+            <img src="https://wallpaperaccess.com/full/428282.jpg" alt="image loading" srcset="">
+        </div>
+        <div class="tabs">
+            <div class="btn-container">
+                <button class="button live" data-id="step1">step1</button>
+                <button class="button " data-id="step2">step2</button>
+                <button class="button"data-id="step3">step3</button>
+            </div>
+           
+
+        <div class="tabs-content">
+             <div class="content live " id="step1">
+                <h3>step1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae obcaecati mollitia beatae, ducimus placeat voluptas quidem reiciendis recusandae assumenda! Sed repellendus in natus nulla rem, veniam a tempora minus? Dicta sed sint beatae illo ab maiores minima quo libero optio distinctio nam aliquid dolorem omnis asperiores, perspiciatis dolores nesciunt inventore!</p>
+            </div>
+             <div class="content "id="step2">
+                <h3>step2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae obcaecati mollitia beatae, ducimus placeat voluptas quidem reiciendis recusandae assumenda! Sed repellendus in natus nulla rem, veniam a tempora minus? Dicta sed sint beatae illo ab maiores minima quo libero optio distinctio nam aliquid dolorem omnis asperiores, perspiciatis dolores nesciunt inventore!</p>
+             </div>
+             <div class="content "id="step3">
+                <h3>step3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae obcaecati mollitia beatae, ducimus placeat voluptas quidem reiciendis recusandae assumenda! Sed repellendus in natus nulla rem, veniam a tempora minus? Dicta sed sint beatae illo ab maiores minima quo libero optio distinctio nam aliquid dolorem omnis asperiores, perspiciatis dolores nesciunt inventore!</p>
+            
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const tabs = document.querySelector(".tabs");
+        const btns = document.querySelectorAll(".button");
+        const articles = document.querySelectorAll(".content");
+
+        tabs.addEventListener("click", (event) => {
+            
+            const id = event.target.dataset.id
+
+            if (id) {
+                btns.forEach((btn)=>{
+                    btn.classList.remove("live")
+                });
+                event.target.classList.add("live");
+                articles.forEach((articles)=>{
+articles.classList.remove("live");
+                });
+                const element = document.getElementById(id);
+                element.classList.add("live");
+        }})
+        
+    </script>
+
+</body>
+</html>
