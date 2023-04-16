@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading</title>
+    <style>
+          body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            background-color: black;
+            color: rgb(83, 182, 7);
+            font-family:cursive;
+
+          }  
+          .container{
+            text-align: center;
+            width: 500px;
+            position: relative;
+
+          }
+          .counter{
+            font-size: 50px;
+          }
+          .loading-bar-back{
+            position: absolute;
+            height: 8px;
+            background-color: rgb(81, 117, 127);
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+
+          }
+          .loading-bar-front{
+            position: absolute;
+            height: 8px;
+            background-color: orangered;
+            width: 0%;
+            border-radius: 5px;
+            border: none;
+
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loading</h1>
+        <div class="counter">0%</div>
+        <hr class="loading-bar-back">
+        <hr class="loading-bar-front">
+
+    </div>
+    <script>
+        const counterEl = document.querySelector(".counter")
+
+        const barEl = document.querySelector(".loading-bar-front")
+
+        let idx = 0;
+
+        updateNum()
+
+        function updateNum(){
+
+            counterEl.innerText = idx + "%"
+            barEl.style.width = idx + "%"
+            idx++
+            if(idx < 101){
+                setTimeout(updateNum, 50)
+            }
+        }
+    </script>
+</body>
+</html>
