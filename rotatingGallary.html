@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Gallary</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            justify-content: center;
+            background-color: black;
+            overflow: hidden;
+
+        }
+        .image-container{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform  .9s;
+
+        }
+        .image-container span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: rotateY(calc(var(--i)*45deg)) translateZ(400px);
+            
+
+
+        }
+        .image-container span img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+
+        }
+        .btn-container{
+            position: absolute;
+            width: 80%;
+           
+
+        }
+        .btn{
+            position: absolute;
+            bottom: -80px;
+            background-color: rgb(85, 63, 229);
+            color: white;
+            border: none;
+            padding: 10px 20px ;
+            border-radius: 5px;
+            cursor: pointer;
+
+
+        }
+        .btn:hover{
+            filter: brightness(1.5);
+        }
+        #Prev{
+            left:20% ;
+
+        }
+        
+        #Next{
+            right:20% ;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <span style="--i: 1">
+            <img src="https://picsum.photos/seed/picsum/300/200" alt="wait image loading"></span>
+
+            <span style="--i: 2">
+                <img src="https://picsum.photos/300/200" alt="wait image loading"></span>
+
+                <span style="--i: 3">
+                    <img src="https://picsum.photos/id/29/300/200" alt="wait image loading"></span>
+
+                    <span style="--i: 4">
+                        <img src="https://picsum.photos/id/41/300/200" alt="wait image loading"></span>
+
+                        <span style="--i: 5">
+                            <img src="https://picsum.photos/id/227/300/200" alt="wait image loading"></span>
+
+                            <span style="--i: 6">
+                                <img src="https://picsum.photos/id/22/300/200" alt="wait image loading"></span>
+
+                                <span style="--i: 7">
+                                    <img src="https://picsum.photos/id/26/300/200" alt="wait image loading"></span>
+
+                                    <span style="--i: 8">
+                                        <img src="https://picsum.photos/id/32/300/200" alt="wait image loading"></span>
+
+                                    
+    </div>
+    <div class="btn-container">
+        <button class="btn" id="Prev">Prev</button>
+        <button class="btn" id="Next">Next</button>
+    </div>
+
+    <script>
+        const imagecontainerEl = document.querySelector(".image-container")
+
+        const PrevEl = document.getElementById("Prev");
+        const NextEl = document.getElementById("Next");
+
+        let x = 0;
+
+        PrevEl.addEventListener("click", () => {
+    x = x + 45;
+    updateGallary();
+});
+
+NextEl.addEventListener("click", () => {
+    x = x - 45;
+    updateGallary();
+});
+
+
+        function updateGallary() {
+            imagecontainerEl.style.transform = `perspective(1000px) rotateY(${x}deg)`;
+
+          
+        }
+
+    </script>
+</body>
+</html>
